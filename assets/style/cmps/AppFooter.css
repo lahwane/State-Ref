@@ -1,0 +1,9 @@
+.app-footer {
+    background-color: var(--clr1);
+    color: var(--clr1bg);
+    font-weight: 700;
+    font-size: 1.35em;
+    padding: 0.5em 1.6em;
+    text-align: center;
+}
+

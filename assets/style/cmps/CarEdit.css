@@ -1,0 +1,14 @@
+.car-edit {
+    text-align: center;
+}
+
+.car-edit form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.car-edit.loading-car {
+    opacity: 0.6;
+    pointer-events: none;
+}
