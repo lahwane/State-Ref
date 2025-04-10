@@ -4,8 +4,7 @@ export const utilService = {
     getRandomIntInclusive,
     loadFromStorage,
     saveToStorage,
-    animateCSS,
-    debounce
+    animateCSS
 }
 
 function makeId(length = 6) {
@@ -20,11 +19,12 @@ function makeId(length = 6) {
 }
 
 function makeLorem(size = 100) {
-    var words = ['The sky', 'above', 'the port', 'was', 'the color of television', 'tuned', 'to', 'a dead channel', '.', 'All', 'this happened', 'more or less', '.', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', '.', 'It', 'was', 'a pleasure', 'to', 'burn']
+    const words = ['The sky', 'above', 'the port', 'was', 'the color' ,'of nature', 'tuned', 'to', 'a live channel', 'All', 'this happened', 'more or less', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', 'a pleasure', 'to', 'burn']
     var txt = ''
     while (size > 0) {
         size--
-        txt += words[Math.floor(Math.random() * words.length)] + ' '
+        txt += words[Math.floor(Math.random() * words.length)]
+        if (size >= 1 ) txt += ' '
     }
     return txt
 }
@@ -44,30 +44,17 @@ function loadFromStorage(key) {
     return (data) ? JSON.parse(data) : undefined
 }
 
-// In our utilService
-function animateCSS(el, animation) {
+function animateCSS(el, animation='bounce') {
     const prefix = 'animate__'
     return new Promise((resolve, reject) => {
         const animationName = `${prefix}${animation}`
-
         el.classList.add(`${prefix}animated`, animationName)
-
-        // When the animation ends, we clean the classes and resolve the Promise
         function handleAnimationEnd(event) {
             event.stopPropagation()
             el.classList.remove(`${prefix}animated`, animationName)
             resolve('Animation ended')
         }
+
         el.addEventListener('animationend', handleAnimationEnd, { once: true })
     })
-}
-
-function debounce(func, timeout = 300) {
-    let timer
-    return (...args) => {
-        clearTimeout(timer)
-        timer = setTimeout(() => {
-            func.apply(this, args)
-        }, timeout)
-    }
 }

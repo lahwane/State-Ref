@@ -1,7 +1,17 @@
 .app-header {
     background-color: var(--clr1);
-    color: var(--clr1bg);
-    padding-block: 1em;
+    color: var(--clr2bg-light);
+    
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.header-container h1 {
+    flex-grow: 1;
 }
 
 .app-nav {
@@ -10,23 +20,15 @@
 }
 
 
-.shopping-cart-link {
-    position: relative;
+a.active {
+    color: rgb(241, 212, 241);
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 
-.shopping-cart-count {
-    position: absolute;
-    width: 1em;
-    height: 1em;
-    padding: 0.7em;
-    background-color: red;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 90%;
-    left: 90%;
-    border-radius: 50%;
-
+@media (max-width: 720px) {
+    .app-header {
+        color: var(--clr2bg-light);
+    }
 }
